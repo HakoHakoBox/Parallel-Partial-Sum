@@ -1,1 +1,3 @@
 # Parallel-Partial-Sum
+
+Parallel programming can be used to find the partial sum of numbers. This code uses MPI_Bcast and MPI_Reduce but there are other ways to get the partial sum. 10 processors will be used to find the partial sum of 1000, which is 500,500. In processor 0, we populate an array of size 1000 with numbers 1 to 1000. Using MPI_Bcast, 100 numbers from the array will be sent to each processor to be summed up. Processor 0 will sum up numbers 1 to 100, while processor 1 will sum up numbers 101 to 200 and so forth. The sum is placed into the variable 'token', which is sent back to processor 0 with MPI_Reduce. The total sum can then be found in the variable 'final_token'.
